@@ -8,6 +8,13 @@
       "when": 1727452428392,
       "tag": "0000_blue_forgotten_one",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1727801196743,
+      "tag": "0001_loud_warpath",
+      "breakpoints": true
     }
   ]
 }
