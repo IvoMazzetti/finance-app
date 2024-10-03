@@ -47,6 +47,7 @@ export const AccountForm = ({
     const handleDelete = () => {
         onDelete?.();
     };
+    
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4 pt-4">

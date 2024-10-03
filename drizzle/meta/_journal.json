@@ -15,6 +15,13 @@
       "when": 1727801196743,
       "tag": "0001_loud_warpath",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1727958035279,
+      "tag": "0002_goofy_maelstrom",
+      "breakpoints": true
     }
   ]
 }
