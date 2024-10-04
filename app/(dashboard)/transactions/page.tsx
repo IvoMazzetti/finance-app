@@ -2,17 +2,21 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useNewAccount } from "@/features/accounts/hooks/use-new-account";
-import { useGetAccounts } from "@/features/accounts/api/use-get-accounts";
 import { Loader2, Plus } from "lucide-react";
+
+import { useNewTransaction } from "@/features/transactions/hooks/use-new-transaction";
+import { useGetTransactions } from "@/features/transactions/api/use-get-transactions";
+import { useBulkDeleteAccounts } from "@/features/accounts/api/use-bulk-delete-accounts";
 
 import { columns } from "./collumns";
 import { DataTable } from "@/components/data-table";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useBulkDeleteAccounts } from "@/features/accounts/api/use-bulk-delete-accounts";
-const AccountsPage = () => {
+import { useGetAccounts } from "@/features/accounts/api/use-get-accounts";
+import { accounts } from "@/db/schema";
 
-    const newAccount = useNewAccount();
+const TransactionsPage = () => {
+
+    const newTransaction = useNewTransaction();
     const deleteAccounts = useBulkDeleteAccounts();
     const accountsQuery = useGetAccounts();
     const accounts = accountsQuery.data || [];
@@ -43,18 +47,18 @@ const AccountsPage = () => {
             <Card className="border-none drop-shadow-sm">
                 <CardHeader className="gay-y-2 lg:flex-row lg:items-center lg:justify-between">
                     <CardTitle className="text-xl line-clamp-1">
-                        Accounts page
+                        Transaction History
                     </CardTitle>
-                    <Button onClick={newAccount.onOpen} className="sm">
+                    <Button onClick={newTransaction.onOpen} className="sm">
                         <Plus className="size-4 mr-2"/>
                         Add New
                      </Button>
                 </CardHeader>
                 <CardContent>
                     <DataTable
+                        filterKey="name"
                         columns={columns}
                         data={accounts}
-                        filterKey="name"
                         onDelete={(row) => {
                             const ids = row.map((r) => r.original.id);
                             deleteAccounts.mutate({ ids });
@@ -67,4 +71,4 @@ const AccountsPage = () => {
     );
 };
 
-export default AccountsPage;
+export default TransactionsPage;
