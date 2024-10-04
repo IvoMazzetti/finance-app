@@ -22,6 +22,13 @@
       "when": 1727958035279,
       "tag": "0002_goofy_maelstrom",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1728044861954,
+      "tag": "0003_round_cable",
+      "breakpoints": true
     }
   ]
 }
