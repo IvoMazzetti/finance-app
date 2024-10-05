@@ -29,35 +29,32 @@ const app = new Hono()
             const defaultFrom = subDays(defaultTo, 30);
 
             const startDate = from ? parse(from, "yyyy-MM-dd", new Date()) : defaultFrom;
-
             const endDate = to ? parse(to, "yyyy-MM-dd", new Date()) : defaultTo;
 
-        const data = await db
-        .select({
-            id: transactions.id,
-            date:transactions.date,
-            category: categories.name,
-            categoryId: transactions.categoryId,
-            payee: transactions.payee,
-            amount: transactions.amount,
-            notes: transactions.notes,
-            account: accounts.name,
-            accountId: transactions.accountId,
-        })
-        .from(transactions)
-        .innerJoin(accounts, eq(transactions.accountId, accounts.id))
-        .leftJoin(categories, eq(transactions.categoryId, categories.id))
-        .where(
-            and(
-                accountId ? eq(transactions.accountId, accountId) : undefined,
-                eq(accounts.userId, auth.userId),
-                gte(transactions.date, startDate),
-                gte(transactions.date, endDate),
-                lte(transactions.date, endDate),
-            )
-        )
-        .orderBy(desc(transactions.date));
-        
+            const data = await db
+                .select({
+                    id: transactions.id,
+                    date: transactions.date,
+                    category: categories.name,
+                    categoryId: transactions.categoryId,
+                    payee: transactions.payee,
+                    amount: transactions.amount,
+                    notes: transactions.notes,
+                    account: accounts.name,
+                    accountId: transactions.accountId,
+                })
+                .from(transactions)
+                .innerJoin(accounts, eq(transactions.accountId, accounts.id))
+                .leftJoin(categories, eq(transactions.categoryId, categories.id))
+                .where(
+                    and(
+                        accountId ? eq(transactions.accountId, accountId) : undefined,
+                        eq(accounts.userId, auth.userId),
+                        gte(transactions.date, startDate),
+                        lte(transactions.date, endDate),
+                    )
+                )
+                .orderBy(desc(transactions.date));
 
         return c.json({ data }); 
     })
