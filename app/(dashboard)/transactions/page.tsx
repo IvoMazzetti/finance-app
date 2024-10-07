@@ -13,7 +13,6 @@ import { DataTable } from "@/components/data-table";
 import { Skeleton } from "@/components/ui/skeleton";
 
 import { columns } from "./collumns";
-import { useState } from "react";
 
 const TransactionsPage = () => {
 

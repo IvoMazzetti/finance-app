@@ -1,6 +1,5 @@
 "use client";
 
-import { queryOptions } from "@tanstack/react-query";
 import { useMemo } from "react";
 import { SingleValue } from "react-select";
 import CreateableSelect from "react-select/creatable";
