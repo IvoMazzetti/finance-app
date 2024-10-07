@@ -4,7 +4,6 @@ import {
     XAxis,
     ResponsiveContainer,
     CartesianGrid,
-    Bar,
     LineChart,
     Line,
 } from "recharts";
@@ -18,7 +17,6 @@ type Props = {
         expenses: number,
     }[];
 };
-
 
 export const LineVariant = ({ data }: Props) => {
 

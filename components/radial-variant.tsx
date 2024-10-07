@@ -44,9 +44,11 @@ export const RadialVariant = ({ data }: Props) => {
                     verticalAlign="bottom"
                     align="right"
                     iconType="circle"
+                    // @ts-ignore
                     content={({ payload }: any) => {
                         return (
                             <ul className="flex flex-col gap-y-2">
+                                
                                 {payload.map((entry: any, index: number) => (
                                     <li 
                                         key={`item-${index}`}
